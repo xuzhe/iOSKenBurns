@@ -92,9 +92,7 @@
     
     // Fill the buffer.
     for (uint i=0; i<bufferSize; i++) {
-        NSString *url = [[NSString alloc] initWithString:[urls objectAtIndex:i]];
-        [self.imagesArray addObject:[self _downloadImageFrom:url]];
-        [url release];
+        [self.imagesArray addObject:[self _downloadImageFrom:[urls objectAtIndex:i]]];
     }
     
     self.layer.masksToBounds = YES;
@@ -125,7 +123,6 @@
 - (UIImage *) _downloadImageFrom:(NSString *) url
 {
     UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:url]]];
-    [url release];
     return image;
 }
 
